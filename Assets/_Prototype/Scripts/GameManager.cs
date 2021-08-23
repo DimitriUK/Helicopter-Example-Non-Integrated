@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+//using HmsPlugin;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class GameManager : MonoBehaviour
     #region Core Functions
     public void EndGame(bool success, float landingSpeed)
     {
+        if (isEnded)
+            return;
+
+        isEnded = true;
+
         if (success)
             Success(landingSpeed);
         else Failed();
@@ -41,23 +47,15 @@ public class GameManager : MonoBehaviour
 
         GiveScore(landingSpeed);
 
-        //if (SceneManager.GetActiveScene().buildIndex == 0)         
-        Debug.Log("Give Achievement for completing first level");
+        //if (SceneManager.GetActiveScene().name == "Level01")         
+        Debug.Log("Give Achievement for completing first level"); // Can be replaced with an achievement to be provided when you complete your first level.
+        //HMSAchievementsManager.Instance.UnlockAchievement(HMSAchievementConstants.LandinglikeaPro);
 
         if (landingSpeed < 0.33f)
         {
-            Debug.Log("Give achievement for getting 3 stars for first time");
-
-            /// STEAM EXAMPLE
-            /// 
-            //int numAchievements = SteamUserStats()->GetNumAchievements();
-            //for (int i = 0; i < numAchievements; ++i)
-            //{
-            //    const char* achName = SteamUserStats()->GetAchievementName(i);
-            //    if (achName)
-            //    {
-            //        printf("%s", achName);
-            //    }
+            Debug.Log("Give achievement for getting 3 stars for first time"); // Can be replaced with an achievement when completing a level with a score of 3 stars.
+            //HMSAchievementsManager.Instance.UnlockAchievement(HMSAchievementConstants.LandinglikeaPro);
+            
         }
     }
 
@@ -69,6 +67,8 @@ public class GameManager : MonoBehaviour
         UIManager.instance.ResultsPopup(false, 0);
 
         Debug.Log("Give Achievement for losing level");
+
+        //HuaweiManager.instance.OpenAd(0);
     }
 
     public void GiveScore(float landingSpeed)
@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         else
         {
             UIManager.instance.StarsPopup(0);
+            
         }
     }
 

@@ -5,10 +5,10 @@ using UnityEngine;
 public class LandDetection : MonoBehaviour
 {
     bool firstTouch;
+    bool isStopped;
+
     public float firstTouchSpeed;
     public float currentSpeed;
-
-    bool isStopped;
 
     private void Start()
     {
@@ -34,7 +34,6 @@ public class LandDetection : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         if (isStopped)
