@@ -1,6 +1,4 @@
 ﻿//using HmsPlugin;
-//using HuaweiMobileServices.IAP;
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,14 +9,12 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
-        //HMSAccountManager.Instance.SignIn();
+        //HMSAccountManager.Instance.SignIn(); // Logs in the Huawei Account when entering the game.
     }
-
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     } 
-
     public void OpenAchievements() // If using achievements, you may use this function to open up the native achievements UI.
     {
         //HMSAchievementsManager.Instance.ShowAchievements(); // Opens Native Huawei UI for Achievements

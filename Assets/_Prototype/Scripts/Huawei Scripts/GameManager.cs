@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 //using HmsPlugin;
 
@@ -47,15 +45,16 @@ public class GameManager : MonoBehaviour
 
         GiveScore(landingSpeed);
 
-        //if (SceneManager.GetActiveScene().name == "Level01")         
-        Debug.Log("Give Achievement for completing first level"); // Can be replaced with an achievement to be provided when you complete your first level.
-        //HMSAchievementsManager.Instance.UnlockAchievement(HMSAchievementConstants.LandinglikeaPro);
+        if (SceneManager.GetActiveScene().name == "Level01")
+        {
+            //HMSAchievementsManager.Instance.UnlockAchievement(HMSAchievementConstants.FirstLevelComplete); // Unlocks the achievement mentioned in the Constants Class
+            //HMSAchievementsManager.Instance.RevealAchievement(HMSAchievementConstants.SecondLevelComplete); // Reveals the achievement of completing the second level, which can now be shown in the native UI on the main menu.
+        }
 
         if (landingSpeed < 0.33f)
         {
             Debug.Log("Give achievement for getting 3 stars for first time"); // Can be replaced with an achievement when completing a level with a score of 3 stars.
             //HMSAchievementsManager.Instance.UnlockAchievement(HMSAchievementConstants.LandinglikeaPro);
-            
         }
     }
 
@@ -68,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Give Achievement for losing level");
 
-        //HuaweiManager.instance.OpenAd(0);
+        //HuaweiManager.instance.OpenAd(0); // When failing the level, trigger a banner-based advertisement to start.
     }
 
     public void GiveScore(float landingSpeed)
